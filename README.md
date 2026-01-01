@@ -1,30 +1,57 @@
-# 🧠 JavaScript Day 13 — map(), filter(), every(), some(), reduce()
+# 🧠 JavaScript Day 14 — Spread Operator (...)
 
-Bu darsda men JavaScript’da array methodlari — map(), filter(), every(), some(), reduce() bilan ishlashni o‘rgandim.
-Amaliy misollar orqali array elementlarini o‘zgartirish, saralash, tekshirish va bitta qiymatga yig‘ishni mustahkamlab oldim.
+Bu darsda men JavaScript’da **Spread operator (...)** bilan ishlashni o‘rgandim.
+Amaliy misollar orqali array va object’larni kengaytirish, nusxalash va birlashtirishni mustahkamlab oldim.
 
 ---
 
 ## 📚 O‘rganganlarim / What I learned
 
-map() methodi
+### Spread operator (...) nima?
 
-map() — array’ning har bir elementini o‘zgartirib yangi array qaytaradi.
+Spread operator — array yoki object ichidagi elementlarni **yoyib chiqarish** uchun ishlatiladi.
+U yangi array yoki object yaratishda juda qulay.
+
+---
+
+### Array bilan ishlash
+
+Array’ni nusxalash:
+
 ```
 const numbers = [1, 2, 3];
-const doubled = numbers.map(num => num * 2);
-console.log(doubled); // [2, 4, 6]
+const copy = [...numbers];
+console.log(copy); // [1, 2, 3]
+```
 
+Array’larni birlashtirish:
 
 ```
-filter() methodi
-
-filter() — shartga mos keladigan elementlardan yangi array yaratadi.
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const merged = [...arr1, ...arr2];
+console.log(merged); // [1, 2, 3, 4]
 ```
-const numbers = [1, 2, 3, 4, 5];
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-console.log(evenNumbers); // [2, 4]
 
+---
+
+### Object bilan ishlash
+
+Object’ni nusxalash:
+
+```
+const user = { name: 'Ali', age: 18 };
+const newUser = { ...user };
+```
+
+Object’larni birlashtirish:
+
+```
+const user = { name: 'Ali' };
+const info = { age: 18, country: 'UZ' };
+
+const fullUser = { ...user, ...info };
+console.log(fullUser);
 ```
 
 ---
@@ -33,59 +60,47 @@ console.log(evenNumbers); // [2, 4]
 
 ```
 const prices = [100, 200, 300];
+const newPrices = [...prices, 400];
 
-// map
-const withTax = prices.map(price => price * 1.12);
+const product = {
+  name: 'Phone',
+  price: 500
+};
 
-// filter
-const expensive = prices.filter(price => price > 150);
+const updatedProduct = {
+  ...product,
+  price: 600
+};
 
-// every
-const allPositive = prices.every(price => price > 0);
-
-// some
-const hasCheap = prices.some(price => price < 150);
-
-// reduce
-const totalPrice = prices.reduce((sum, price) => sum + price, 0);
-
-console.log(withTax);
-console.log(expensive);
-console.log(allPositive);
-console.log(hasCheap);
-console.log(totalPrice);
-
+console.log(newPrices);
+console.log(updatedProduct);
 ```
-
 
 ---
 
 ## 🧩 Qisqacha nazariya / Short Theory
 
-- map() → elementlarni o‘zgartirib yangi array qaytaradi
-- filter() → shartga mos elementlarni ajratadi
-- every() → barcha elementlarni tekshiradi
-- some() → kamida bittasini tekshiradi
-- reduce() → array’ni bitta qiymatga yig‘adi
+* `...array` → array elementlarini yoyadi
+* `...object` → object property’larini yoyadi
+* Spread operator **original ma’lumotni o‘zgartirmaydi**
+* Yangi array yoki object yaratishda ishlatiladi
 
 ---
 
 ## 🎯 Maqsad / Goal
 
-Ushbu darsning maqsadi — JavaScript’da array methodlari yordamida ma’lumotlarni samarali qayta ishlashni o‘rganish.
+Ushbu darsning maqsadi — JavaScript’da **Spread operator** yordamida ma’lumotlarni qulay va xavfsiz boshqarishni o‘rganish.
 
 Buning yordamida:
 
-- Array elementlarini o‘zgartirish
-- Keraksizlarini olib tashlash
-- Shartlarni tekshirish
-- Hisob-kitoblarni soddalashtirish
-mumkin bo‘ladi.
-
+* Array va object’larni nusxalash
+* Ma’lumotlarni birlashtirish
+* Eski qiymatlarni buzmasdan yangilash
+  mumkin bo‘ladi.
 
 ---
 
 ## 💬 Muallif / Author
 
-✍️ Shokhjahon Qalandarov  
-📅 Dars: 13-kun — map(), filter(), every(), some(), reduce()
+✍️ Shokhjahon Qalandarov
+📅 Dars: 14-kun — Spread Operator (...)
